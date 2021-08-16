@@ -4,6 +4,7 @@
   "main": "./lib/lib.js",
   "typings": "./lib/lib.d.ts",
   "description": "GraphQL IDE for better development workflows (GraphQL Subscriptions, interactive docs & collaboration).",
+  "homepage": "https://ljshwyykl.github.io/graphql-playground-react",
   "contributors": [
     "Tim Suchanek <tim@graph.cool>",
     "Johannes Schickling <johannes@graph.cool>",
@@ -19,7 +20,8 @@
     "start:analyze": "ANALYZE_BUNDLE=true node scripts/start.js",
     "start:graphql-bin": "ACTIVE_APP=graphqlbin node scripts/start.js",
     "prepublishOnly": "yarn build",
-    "build": "rimraf dist build dist && yarn build-app && yarn build-package",
+    "build": "rimraf dist build dist && yarn build-app && yarn build-package && cp 404.html build/404.html",
+
     "tsc": "tsc -p tsconfig.build.json",
     "build-package": "rimraf lib build/dist && npm run tsc && babel lib -d lib && cp -r ./src/assets/ ./lib/assets/ && cd lib && rimraf *.jsx;",
     "build-app": "node scripts/build.js",
@@ -66,6 +68,7 @@
     "connect-history-api-fallback": "1.5.0",
     "cross-spawn": "6.0.5",
     "css-loader": "3.4.2",
+    "cz-conventional-changelog": "^3.3.0",
     "detect-port": "1.2.3",
     "dotenv": "5.0.1",
     "enzyme": "^3.3.0",
@@ -200,5 +203,10 @@
     ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
   },
-  "gitHead": "53d233f9deb9dcc86f99e41268ff92b6367e0713"
+  "gitHead": "53d233f9deb9dcc86f99e41268ff92b6367e0713",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
